@@ -1,4 +1,14 @@
-// add new task
+function deleteTask(event) {
+    var taskItem = event.target.parentElement;
+    taskItem.remove();
+}
+
+function setupDeleteTaskButtons() {
+    var deleteButtons = document.getElementsByClassName('delete_task');
+    for (var i = 0; i < deleteButtons.length; i++) {
+        deleteButtons[i].addEventListener('click', deleteTask);
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function() {
     var addButton = document.getElementById('add__new-task');
@@ -23,6 +33,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ul.appendChild(li);
 
             newTaskInput.value = '';
+            
+            // delete task
+            deleteBtn.addEventListener('click', deleteTask);
         }
     }
 
@@ -33,4 +46,15 @@ document.addEventListener('DOMContentLoaded', function() {
             addNewTask();
         }
     });
+
+    setupDeleteTaskButtons();
+});
+
+// add listener for new elements
+var toDoList = document.getElementById('to-do-list');
+toDoList.addEventListener('DOMNodeInserted', function(event) {
+    if (event.target.classList.contains('to-do-list_item')) {
+        var deleteBtn = event.target.querySelector('.delete_task');
+        deleteBtn.addEventListener('click', deleteTask);
+    }
 });
