@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <title>TO-DO</title>
+    <meta property="og:title" content="TO-DO">
+    <meta property="og:description" content="test case">
+    <meta property="og:image" content="https://example.com/image.jpg">
+    <meta property="og:url" content="https://example.com/">
+</head>
+
+<body>
+    <section class="main-container">
+        <section class="header-container">
+            <header class="header-top">
+                <p class="header-top_title">Todo App</p>
+                <p class="header-top_name">Lucas Viga</p>
+            </header>
+        </section>
+        <section class="to-do_container">
+            <fieldset class="to-do_container_fieldset">
+                <label for="new-task"><input class="new-task" id="new-task" name="new-task" type="text"
+                        placeholder="Add a new task" /></label>
+                <button class="add__new-task" id="add__new-task"></button>
+            </fieldset>
+            <fieldset class="to-do_container_task-list">
+                <p class="to-do_container_task-list_title">Tasks to do - 4</p>
+                <ul id="task-list to-do-list">
+                    <li class="to-do-list_item">
+                        <label class="task-to-do" for="task-to-do">To study React fundamentals</label>
+                        <button class="add_task_to_done" id="add_task_to_done"></button>
+                        <button class="delete_task" id="delete_task"></button>
+                    </li>
+                    <li class="to-do-list_item">
+                        <label class="task-to-do" for="task-to-do">To study React fundamentals</label>
+                        <button class="add_task_to_done" id="add_task_to_done"></button>
+                        <button class="delete_task" id="delete_task"></button>
+                    </li>
+                    <li class="to-do-list_item">
+                        <label class="task-to-do" for="task-to-do">To study React fundamentals</label>
+                        <button class="add_task_to_done" id="add_task_to_done"></button>
+                        <button class="delete_task" id="delete_task"></button>
+                    </li>
+                    <li class="to-do-list_item">
+                        <label class="task-to-do" for="task-to-do">To study React fundamentals</label>
+                        <button class="add_task_to_done" id="add_task_to_done"></button>
+                        <button class="delete_task" id="delete_task"></button>
+                    </li>
+                </ul>
+            </fieldset>
+            <fieldset class="to-do_container_task-list is-done-container">
+                <p class="to-do_container_task-list_title">Done - 1</p>
+                <ul id="task-list is-done-list">
+                    <li class="is-done-list_item">
+                        <label for="task-is-done">To study React fundamentals</label>
+                    </li>
+                </ul>
+            </fieldset>
+        </section>
+    </section>
+
+</body>
+
+</html>
