@@ -1,6 +1,13 @@
 function deleteTask(event) {
     var taskItem = event.target.parentElement;
     taskItem.remove();
+    updateTaskCount();
+}
+
+function updateTaskCount() {
+    const toDoListItems = document.querySelectorAll('.to-do-list_item');
+    const toDoListTitle = document.querySelector('.to-do_container_task-list_title');
+    toDoListTitle.textContent = `Tasks to do - ${toDoListItems.length}`;
 }
 
 function setupDeleteTaskButtons() {
@@ -33,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ul.appendChild(li);
 
             newTaskInput.value = '';
+            updateTaskCount();
             
             // delete task
             deleteBtn.addEventListener('click', deleteTask);
@@ -48,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     setupDeleteTaskButtons();
+    updateTaskCount();
 });
 
 // add listener for new elements
