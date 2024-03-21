@@ -157,7 +157,7 @@ body {
     padding: 0;
 }
 
-.delete_task:first-child {
+.delete_task:hover {
     background: url(./images/TrashSimpleDark.svg) no-repeat center;
 }
 
