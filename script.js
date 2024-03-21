@@ -1,13 +1,31 @@
 function deleteTask(event) {
     var taskItem = event.target.parentElement;
     taskItem.remove();
-    updateTaskCount();
+    updateToDoTaskCount();
 }
 
-function updateTaskCount() {
+function updateToDoTaskCount() {
     const toDoListItems = document.querySelectorAll('.to-do-list_item');
     const toDoListTitle = document.querySelector('.to-do_container_task-list_title');
     toDoListTitle.textContent = `Tasks to do - ${toDoListItems.length}`;
+}
+
+function updateDoneTaskCount() {
+    const doneListItems = document.querySelectorAll('.is-done-list_item');
+    const doneListTitle = document.querySelector('.is-done_container_task-list_title');
+    doneListTitle.textContent = `Done - ${doneListItems.length}`;
+}
+
+function moveTaskToDone(taskToDo) {
+    var newTaskItem = document.createElement('li');
+    newTaskItem.classList.add('is-done-list_item');
+    newTaskItem.textContent = taskToDo.querySelector('.task-to-do').textContent;
+    document.querySelector('.is-done-list').appendChild(newTaskItem);
+
+    taskToDo.remove(); // remove task
+    
+    updateToDoTaskCount(); // update to_do counter
+    updateDoneTaskCount(); // update is_done counter
 }
 
 function setupDeleteTaskButtons() {
@@ -40,10 +58,15 @@ document.addEventListener('DOMContentLoaded', function() {
             ul.appendChild(li);
 
             newTaskInput.value = '';
-            updateTaskCount();
-            
+            updateToDoTaskCount();
+
             // delete task
             deleteBtn.addEventListener('click', deleteTask);
+
+            // move task to Done
+            addBtn.addEventListener('click', function() {
+                moveTaskToDone(li);
+            });
         }
     }
 
@@ -56,14 +79,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     setupDeleteTaskButtons();
-    updateTaskCount();
-});
+    updateToDoTaskCount();
 
-// add listener for new elements
-var toDoList = document.getElementById('to-do-list');
-toDoList.addEventListener('DOMNodeInserted', function(event) {
-    if (event.target.classList.contains('to-do-list_item')) {
-        var deleteBtn = event.target.querySelector('.delete_task');
-        deleteBtn.addEventListener('click', deleteTask);
+    function setupMoveTaskToDoneButtons() {
+        var addButtons = document.getElementsByClassName('add_task_to_done');
+        for (var i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener('click', function() {
+                var taskItem = this.parentElement;
+                moveTaskToDone(taskItem);
+            });
+        }
     }
+
+    setupMoveTaskToDoneButtons();
+    updateDoneTaskCount();
 });
