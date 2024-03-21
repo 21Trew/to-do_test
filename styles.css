@@ -167,11 +167,6 @@ body {
     margin-top: 45px;
 }
 
-.is-done-list {
-    padding: 0;
-    margin: 0;
-}
-
 .is-done-list_item {
     display: flex;
     align-items: center;
